@@ -45,7 +45,7 @@ def main():
     config_sliders = {'u': u, 'c':c}
 
     ### BUTTON LOGIC ###
-    if st.button('Run'):
+    if st.button('Simular'):
         # Loading Spinner
         with st.spinner('Simulando'):
             df = generate_simulations_data(n_simulations, config_sliders)
