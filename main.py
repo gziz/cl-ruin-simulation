@@ -31,7 +31,7 @@ def generate_simulations_data(n_simulations, config_sliders):
 def main():
 
     ### MAIN ###
-    st.title('Simulaciones Modelo Cramer-Lundberg')
+    st.title('Modelo Cramer-Lundberg')
     st.subheader('Simulaciones')
 
     line_chart = st.line_chart([10_000_000.0])

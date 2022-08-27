@@ -1,7 +1,6 @@
 import random
 import numpy as np
 
-
 class CL:
 
     def __init__(self,config):
