@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from cl_model import CL
+from cl_model_app import CL
 
 config = {
     "claim_sz_mu": 30774,
