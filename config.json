@@ -1,7 +1,6 @@
 {
-    "claim_sz_alpha": 31002.83,
-    "claim_sz_beta": 0.99264,
-    "claim_sz_mu": 30774,
+    "claim_sz_shape": 0.99264,
+    "claim_sz_scale": 31002.83,
     "claim_rate_lambd": 74.2,
     "u": 10000000,
     "c": 2313775.54,

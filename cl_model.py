@@ -2,31 +2,29 @@ import random
 import numpy as np
 
 class CL:
-
+    
     def __init__(self,config):
         self.config = config
         
     # Generar un tamaño de reclamo $
-    def create_claim_sz(self):
+    def create_claim_sz(self, size: int): #where size is n_claims
         
-        # mu = self.config.get('claim_sz_mu')
-        # lambd = 1/mu
-        #return random.expovariate(lambd=lambd)
+        shape = self.config.get('claim_sz_shape')
+        scale = self.config.get('claim_sz_scale')
 
-        alpha = self.config.get('claim_sz_alpha')
-        beta = self.config.get('claim_sz_beta')
-        return random.gammavariate(alpha, beta)
+        return np.random.gamma(shape=shape, scale=scale, size=size)
 
         
     # Generar número de reclamos por un dia
     def create_claims_cnt(self):
         lambd = self.config.get('claim_rate_lambd')
+        scale = 1/lambd
         total_time = 0
         claims_cnt = 0
         
         while total_time < 1:
-            prob = np.random.uniform()
-            time_interval = (-np.log(prob)) / lambd
+
+            time_interval = np.random.exponential(scale=scale)
             total_time += time_interval
             claims_cnt += 1
 
@@ -36,9 +34,7 @@ class CL:
     def compute_claims_total(self):
         n_claims = self.create_claims_cnt()
 
-        total = 0
-        for _ in range(n_claims):
-            total += self.create_claim_sz()
+        total = self.create_claim_sz(size=n_claims).sum()
 
         return total
 
@@ -61,3 +57,6 @@ class CL:
             curr_sim = self.simulate()
             simulations.append(curr_sim)
         return simulations
+
+
+        
