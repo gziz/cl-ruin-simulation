@@ -3,11 +3,12 @@ import pandas as pd
 from cl_model_app import CL
 
 config = {
-    "claim_sz_mu": 30774,
-    "claim_rate_lambd": 74,
-    "u": 10_000_000,
-    "c": 2_309_004,
-    "time_steps": 1000
+    "claim_sz_shape": 0.99264,
+    "claim_sz_scale": 31002.83,
+    "claim_rate_lambd": 74.2,
+    "u": 10000000,
+    "c": 2313775.54,
+    "time_steps": 1000,
 }
 
 def generate_simulations_data(n_simulations, config_sliders):
@@ -40,7 +41,7 @@ def main():
     st.sidebar.title("Valores Iniciales")
     n_simulations = st.sidebar.slider('Número de simulaciones', 1,15,1)
     u = st.sidebar.number_input('Capital Inicial', 10_000_000)
-    c = st.sidebar.number_input('Primas Diarias', 2_309_004)
+    c = st.sidebar.number_input('Primas Diarias', 2_313_775)
 
     config_sliders = {'u': u, 'c':c}
 
