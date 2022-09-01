@@ -22,7 +22,7 @@ def generate_simulations_data(n_simulations, config_sliders):
     arrays = cl.generate_simulations(n_simulations)
 
     ### ADD RUIN LINE THRESHOLD ####
-    zeros = [0]*1000
+    zeros = [0]*config['time_steps']
     arrays.append(zeros)
 
     df = pd.DataFrame(arrays).T
@@ -47,7 +47,7 @@ def main():
     time_steps = st.sidebar.number_input('Días', value=1000, min_value=1,max_value=10000)
     
     config_sliders = {'u': u, 'c':c, 'time_steps':time_steps}
-
+    
     ### BUTTON LOGIC ###
     if st.button('Simular'):
         # Loading Spinner

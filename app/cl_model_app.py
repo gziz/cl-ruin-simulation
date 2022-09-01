@@ -13,7 +13,8 @@ class CL:
         
         shape = self.config.get('claim_sz_shape')
         scale = self.config.get('claim_sz_scale')
-
+        print(shape)
+        print(scale)
         return - np.random.gamma(shape=shape, scale=scale, size=size).sum()
 
         
@@ -21,6 +22,8 @@ class CL:
     def create_claims_cnt(self):
         time_steps = self.config.get('time_steps')
         lambd = self.config.get('claim_rate_lambd')
+        print(time_steps)
+        print(lambd)
         return np.random.poisson(lam=lambd, size=time_steps)
 
 
@@ -37,6 +40,7 @@ class CL:
     def simulate(self):
         u = self.config.get('u')
         c = self.config.get('c')
+        print(c)
         time_steps = self.config.get('time_steps')
 
         array_daily_total = self.compute_claims_total()
