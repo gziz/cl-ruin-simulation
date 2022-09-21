@@ -40,7 +40,7 @@ def main():
     chart.line_chart([10_000_000.0])
 
     ### SIDE BAR ###
-    st.sidebar.title("Initial Values")
+    st.sidebar.title("Parameters")
     n_simulations = st.sidebar.slider('Number of Simulations', 1,25,1)
     u = st.sidebar.number_input('Initial Capital', min_value=0, value=10_000_000)
     c = st.sidebar.number_input('Daily Premiums', value=2259838)
