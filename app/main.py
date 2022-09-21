@@ -32,31 +32,31 @@ def generate_simulations_data(n_simulations, config_sliders):
 def main():
 
     ### MAIN ###
-    st.title('Modelo Cramer-Lundberg')
-    st.subheader('Simulaciones')
+    st.title('Cramer-Lundberg Model')
+    st.subheader('Monte Carlo Simulations')
 
     #u = 10_000_000.0
     chart = st.empty()
     chart.line_chart([10_000_000.0])
 
     ### SIDE BAR ###
-    st.sidebar.title("Valores Iniciales")
-    n_simulations = st.sidebar.slider('Número de simulaciones', 1,25,1)
-    u = st.sidebar.number_input('Capital Inicial', min_value=0, value=10_000_000)
-    c = st.sidebar.number_input('Primas Diarias', value=2259838)
-    time_steps = st.sidebar.number_input('Días', value=1000, min_value=1,max_value=10000)
+    st.sidebar.title("Initial Values")
+    n_simulations = st.sidebar.slider('Number of Simulations', 1,25,1)
+    u = st.sidebar.number_input('Initial Capital', min_value=0, value=10_000_000)
+    c = st.sidebar.number_input('Daily Premiums', value=2259838)
+    time_steps = st.sidebar.number_input('Time Steps (Days)', value=1000, min_value=1,max_value=10000)
     
     config_sliders = {'u': u, 'c':c, 'time_steps':time_steps}
     
     ### BUTTON LOGIC ###
-    if st.button('Simular'):
+    if st.button('Simulate'):
         # Loading Spinner
-        with st.spinner('Simulando'):
+        with st.spinner('Simulating'):
             df = generate_simulations_data(n_simulations, config_sliders)
 
             chart.line_chart(df)
 
-        st.success('Simulación terminada!')
+        st.success('Done!')
 
     
 if __name__ == "__main__":
